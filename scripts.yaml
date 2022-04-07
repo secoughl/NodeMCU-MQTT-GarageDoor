@@ -1,0 +1,72 @@
+cycle_seans_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: Sean
+  mode: single
+  alias: Cycle Sean's Garage
+  icon: mdi:garage-alert
+cycle_ericas_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: Erica
+  mode: single
+  alias: Cycle Erica's Garage
+  icon: mdi:garage-alert
+open_ericas_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: EricaOpen
+  mode: single
+  alias: Open Erica's Garage
+  icon: mdi:garage-alert
+close_ericas_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: EricaClose
+  mode: single
+  alias: Close Erica's Garage
+  icon: mdi:garage
+open_seans_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: SeanOpen
+  mode: single
+  alias: Open Sean's Garage
+  icon: mdi:garage-alert
+close_seans_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: SeanClose
+  mode: single
+  alias: Close Sean's Garage
+  icon: mdi:garage
+close_all_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: CloseAll
+  mode: single
+  alias: Close All Garage Doors
+  icon: mdi:garage
+open_all_garage:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: doors/garage
+      payload: OpenAll
+  mode: single
+  alias: Open All Garage Doors
+  icon: mdi:garage-alert
