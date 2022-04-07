@@ -7,6 +7,9 @@
 
 ### Then look no further!
 
-Built on an ESPwhatever, uses MQTT messages to decide what door to open/close and when. In my case integrates with Google and Alexa voice assistants using HACloud because otherwise that shit looked **hard**.
+Built on an ESPwhatever, uses MQTT messages to decide what door to open/close and when. In my case integrates with Google and Amazon voice assistants using HACloud because otherwise that shit looked **hard**.
 
-Update secrets_example.h with your pertinent info and then rename it secrets.h. Or not. Do whatever. I'm not your real dad anyway. 
+Example script/sensor info included.
+
+Update secrets_example.h with your pertinent info and then rename it secrets.h. Or not. Do whatever. I'm not your real dad anyway.
+
