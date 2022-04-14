@@ -95,8 +95,6 @@ void setup() {
     }
   }
   client.subscribe("doors/garage");
-  //client.subscribe("doors/garage/seanDoor");
-  //client.subscribe("doors/garage/ericaDoor");
 }
 
 
@@ -149,7 +147,10 @@ void loop() {
     }
     previousTimeUpdate = currentTime;
   }
+  //MQTT Call for HouseKeeping
   client.loop();
+  //Sleep to let the ESP SDK do whatever the fuck it needs to.
+  delay(100)
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
