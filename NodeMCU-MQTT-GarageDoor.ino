@@ -4,12 +4,10 @@
 #include "ESP8266HTTPClient.h"
 #include "secrets.h"
 
-int seanSensorPin = D1;
-int ericaSensorPin = D2;
-int seanPin = D6;
-int ericaPin = D5;
-int seanDoorState = 0;
-int ericaDoorState = 0;
+//Version, File, and HostName Info
+float firmVersion = 1.0;
+String fileLocation = "/src/1_commit/NodeMCU-MQTT-GarageDoor";
+String hostName = "GarageController";
 
 //WIFI and MQTT Info
 const char* ssid = secret_ssid;
@@ -18,6 +16,13 @@ const char* mqttServer = secret_mqttServer;
 const int mqttPort = secret_mqttPort;
 const char* mqttUser = secret_mqttUser;
 const char* mqttPassword = secret_mqttPassword;
+
+int seanSensorPin = D1;
+int ericaSensorPin = D2;
+int seanPin = D6;
+int ericaPin = D5;
+int seanDoorState = 0;
+int ericaDoorState = 0;
 
 //Declarey Needed Intervals
 //One Day in Milis
@@ -41,6 +46,17 @@ PubSubClient client(espClient);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+
+  //Version tracking info
+  Serial.print("Currently running version: ");
+  Serial.println(firmVersion);
+
+  Serial.print("located at: ");
+  Serial.println(fileLocation);
+
+  Serial.print("Hostname is: ");
+  Serial.println(hostName);
+
   static const uint8_t D0   = 16;
   static const uint8_t D1   = 5;
   static const uint8_t D2   = 4;
@@ -65,6 +81,7 @@ void setup() {
 
   // Connect to Wi-Fi
   WiFi.mode(WIFI_STA);
+  WiFi.hostname(hostName.c_str());
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -150,7 +167,7 @@ void loop() {
   //MQTT Call for HouseKeeping
   client.loop();
   //Sleep to let the ESP SDK do whatever the fuck it needs to.
-  delay(100)
+  delay(100);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -213,7 +230,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
   }
 
-  //Change Erica Door State Arbitrarily 
+  //Change Erica Door State Arbitrarily
   if (recv_payload == "Erica") {
     Serial.println ("Would state change Erica");
     digitalWrite(ericaPin, HIGH);
