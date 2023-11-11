@@ -1,0 +1,22 @@
+type: horizontal-stack
+cards:
+  - show_name: true
+    show_icon: true
+    type: button
+    tap_action:
+      action: call-service
+      service: script.cycle_ericas_garage
+      service_data: {}
+      target: {}
+    entity: binary_sensor.erica_garage
+    show_state: true
+  - show_name: true
+    show_icon: true
+    type: button
+    tap_action:
+      action: call-service
+      service: script.cycle_seans_garage
+      service_data: {}
+      target: {}
+    entity: binary_sensor.sean_garage
+    show_state: true
