@@ -1,29 +1,14 @@
-sensor:
-  
-  - platform: mqtt
-    name: "Sean Garage"
+# New MQTT Binary Sensor Format
+mqtt:
+  binary_sensor:
+  - name: "Sean Garage"
     state_topic: "doors/garage/Sean"
-    icon: mdi:garage
-  
-  - platform: mqtt
-    name: "Erica Garage"
-    state_topic: "doors/garage/Erica"
-    icon: mdi:garage
-    
-binary_sensor:
-  
-  - platform: mqtt
-    name: "Sean Garage"
-    state_topic: "doors/garage/Sean"
-    value_template: "{% if value_json.gnode.doors.0.state == 'Closed' %}on{% else %}off{% endif %}"
     payload_on: "Open"
     payload_off: "Closed"
     device_class: garage_door
   
-  - platform: mqtt
-    name: "Erica Garage"
+  - name: "Erica Garage"
     state_topic: "doors/garage/Erica"
-    value_template: "{% if value_json.gnode.doors.0.state == 'Closed' %}on{% else %}off{% endif %}"
     payload_on: "Open"
     payload_off: "Closed"
     device_class: garage_door
